@@ -1,17 +1,15 @@
-import requests
+import constants
 import json
 import spotipy
 from os import path
 from gmusicapi import Mobileclient
 
 client = Mobileclient()
-creds_file = "./credentials"
-log_file = "./log.txt"
 
-if not path.exists(creds_file):
-  client.perform_oauth(creds_file)
+if not path.exists(constants.CREDS):
+  client.perform_oauth(constants.CREDS)
 
-client.oauth_login(Mobileclient.FROM_MAC_ADDRESS, creds_file)
+client.oauth_login(Mobileclient.FROM_MAC_ADDRESS, constants.CREDS)
 artists = []
 
 ## Retrieve songs and filter down to unique artists
@@ -26,5 +24,4 @@ else:
 
 artists.sort()
 
-print(artists)
 
