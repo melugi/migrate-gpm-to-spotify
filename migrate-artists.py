@@ -33,7 +33,7 @@ sp_client = spotipy.Spotify(
   auth_manager=SpotifyOAuth(
     client_id=constants.CLIENT_ID,
     client_secret=constants.CLIENT_SECRET,
-    redirect_uri="http://localhost:8080",
+    redirect_uri=constants.REDIRECT_URI,
     scope=constants.FOLLOW_SCOPE,
     username=constants.CLIENT_USER
     )
@@ -76,5 +76,3 @@ for artist_id in artist_ids:
   bar.next()
 
 bar.finish()
-
-
