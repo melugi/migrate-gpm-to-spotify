@@ -141,3 +141,4 @@ cython_debug/
 gpm_credentials
 spotify_credentials
 log.txt
+.cache-*
