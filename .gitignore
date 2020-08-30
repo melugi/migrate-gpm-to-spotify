@@ -138,5 +138,6 @@ dmypy.json
 cython_debug/
 
 # Project files
-credentials
+gpm_credentials
+spotify_credentials
 log.txt
