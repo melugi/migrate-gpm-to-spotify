@@ -17,6 +17,7 @@ gpm_artists = []
 
 ## Retrieve songs from gpm and reduce down to unique artists
 if gpm_client.is_authenticated():
+  print("Retrieving songs from GPM...")
   songs = gpm_client.get_all_songs()
 
   for song in songs:
@@ -26,7 +27,6 @@ else:
   raise Exception("GpmClient is not authenticated. Credentials may have expired, delete and retry.")
 
 gpm_artists.sort()
-print(gpm_artists)
 
 ## Perform oAuth to Spotify and init client
 sp_client = spotipy.Spotify(
@@ -43,7 +43,7 @@ artist_ids = []
 failed_searches = []
 open(constants.LOG, 'w').close()
 
-bar = Bar("Searching artists...", max=len(gpm_artists))
+bar = Bar("Searching artists on Spotify...", max=len(gpm_artists))
 
 for artist in gpm_artists:
   artist_id = ''
@@ -66,7 +66,15 @@ for artist in gpm_artists:
 bar.finish()
 
 print("Finished searching artists. See below for results:\n")
-print(f"Found {len(artist_ids)}/{len(gpm_artists)} artists.")
-print(f"Missed {len(failed_searches)}/{len(gpm_artists)}. Listed below: ")
-print(failed_searches)
+print(f"Found {len(artist_ids)}/{len(gpm_artists)} artists. Proceeding to follow them for the user: {constants.CLIENT_USER}.")
+print(f"Missed {len(failed_searches)}/{len(gpm_artists)}. See {constants.LOG} for a list of failures.\n")
+
+bar = Bar(f"Following artists for {constants.CLIENT_USER}...", max=len(artist_ids))
+
+for artist_id in artist_ids:
+  sp_client.user_follow_artists([artist_id])
+  bar.next()
+
+bar.finish()
+
 
