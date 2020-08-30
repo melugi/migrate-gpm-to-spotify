@@ -7,10 +7,10 @@ from spotipy.oauth2 import SpotifyOAuth
 
 gpm_client = GpmClient()
 
-if not path.exists(constants.CREDS):
-  gpm_client.perform_oauth(constants.CREDS)
+if not path.exists(constants.GPM_CACHE):
+  gpm_client.perform_oauth(constants.GPM_CACHE)
 
-gpm_client.oauth_login(GpmClient.FROM_MAC_ADDRESS, constants.CREDS)
+gpm_client.oauth_login(GpmClient.FROM_MAC_ADDRESS, constants.GPM_CACHE)
 gpm_artists = []
 
 ## Retrieve songs and filter down to unique artists

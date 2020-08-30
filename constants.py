@@ -1,5 +1,5 @@
-GPM_CREDS = "./gpm_credentials"
-SPOTIFY_CREDS = "./spotify_credentials"
+GPM_CACHE = "./.cache-gpm"
+SPOTIFY_CACHE = "./.cache-spotify"
 LOG = "./log.txt"
 FOLLOW_SCOPE = "user-follow-modify"
 
