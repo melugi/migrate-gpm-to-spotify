@@ -2,7 +2,7 @@
 
 This project came about because Google decided to shut down their Play Music service and replace it with YouTube Music. YouTube Music wasn't up to snuff with what I wanted out of a music service, so I made the switch to Spotify. Migrating 600+ artists and 1000+ albums was taking too long though so I wrote this script to alleviate some of the work.
 
-Thus far only artist migration is supported. Album migration might be added but the Play Music service is being cut shortly so the usefulness is debatable.
+Only artist migration was done before the service was shut down.
 
 # Installation, Setup, and Execution
 
